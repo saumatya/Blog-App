@@ -3,11 +3,13 @@ const mongoose = require('mongoose')
 const Article = require('./models/article')
 const articleRouter = require('./routes/articles')
 const methodOverride = require('method-override')
+require('dotenv').config();
 
 const app = express()
+const uri = process.env.MONGODB_URI;
 // mongoose.connect('mongodb://localhost:27017/BlogDB')
-mongoose.connect('mongodb://localhost/blog')
-
+//mongoose.connect('mongodb://localhost/blog')
+mongoose.connect(uri)
 // mongoose
 // .connect('mongodb://localhost/blog')
 // .then(() => {
@@ -32,4 +34,4 @@ app.get('/', async (req, res) => {
 
 app.use('/articles',articleRouter)
 
-app.listen(5000)
+app.listen(process.env.PORT)
