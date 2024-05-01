@@ -6,19 +6,15 @@ const methodOverride = require('method-override')
 require('dotenv').config();
 
 const app = express()
-const uri = process.env.MONGODB_URI;
+// const dbName = ;
+const uri = process.env.MONGODB_URI + process.env.DB_NAME;
 // mongoose.connect('mongodb://localhost:27017/BlogDB')
 //mongoose.connect('mongodb://localhost/blog')
 mongoose.connect(uri)
-// mongoose
-// .connect('mongodb://localhost/blog')
-// .then(() => {
-//     console.log("DB connected successfully")
-//     app.listen(PORT, () => {
-//         console.log(`Server is running on port ${PORT}`)
-//     })
-// })
-// .catch ((error) => console.log(error))
+.then(() => {
+    console.log("DB connected successfully")
+})
+.catch ((error) => console.log(error))
 
 app.set('view engine','ejs')
 app.use(express.urlencoded({extended: false}))
