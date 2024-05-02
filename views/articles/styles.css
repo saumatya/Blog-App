@@ -1,0 +1,16 @@
+/* styles.css */
+h1 {
+    background-color: blue; /* Change background color to blue */
+}
+
+.card {
+    border: 2px solid green; /* Add a green border to the cards */
+}
+
+.card-header {
+    background-color: yellow; /* Change background color of card headers to yellow */
+}
+
+.card-footer {
+    text-align: center; /* Center align text in card footers */
+}

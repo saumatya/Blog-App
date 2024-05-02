@@ -1,19 +1,103 @@
-<div class="form-group">
-    <label for="title">Title</label>
-    <input required  value="<%= article.title %>" type="text" name="title" id="title" class="form-control">    
-</div>
-<div class="form-group">
-    <label for="description">Description</label>
-    <textarea required name="description" id="description" class="form-control">    
-       <%= article.description %> </textarea>
-</div>
-<div class="form-group">
-    <label for="markdown">markdown</label>
-    <textarea required name="markdown" id="markdown" class="form-control">    
-        <%= article.markdown %></textarea>
-</div>
+<style>
+    .form-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 
-<a href="/" class="button-cancel">
-    Cancel
-</a>
-<button type="submit">Save</button>
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .button-cancel {
+        padding: 10px 20px;
+        background-color: #e74c3c;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+    }
+
+    .button-save {
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .button-save:hover,
+    .button-cancel:hover {
+        opacity: 0.9;
+    }
+</style>
+<script>
+    window.onload = function() {
+        // Function to set cursor at the beginning of the textarea
+        function setCursorToStart(element) {
+            element.focus(); // Set focus to the element
+            element.setSelectionRange(0, 0); // Set selection range from start to start (position 0)
+        }
+
+        // Get the description and markdown textarea elements
+        var descriptionTextarea = document.getElementById('description');
+        var markdownTextarea = document.getElementById('markdown');
+
+        // Add event listeners to set cursor at the beginning when textarea is clicked
+        descriptionTextarea.addEventListener('click', function() {
+            setCursorToStart(this);
+        });
+
+        markdownTextarea.addEventListener('click', function() {
+            setCursorToStart(this);
+        });
+    };
+</script>
+
+<div class="form-container">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input required value="<%= article.title %>" type="text" name="title" id="title" class="form-control">    
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea required name="description" id="description" class="form-control">    
+            <%= article.description %>
+        </textarea>
+    </div>
+    <div class="form-group">
+        <label for="markdown">Markdown</label>
+        <textarea required name="markdown" id="markdown" class="form-control">    
+            <%= article.markdown %>
+        </textarea>
+    </div>
+
+    <div class="buttons">
+        <a href="/" class="button-cancel">Cancel</a>
+        <button type="submit" class="button-save">Save</button>
+    </div>
+</div>
